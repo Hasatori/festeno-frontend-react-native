@@ -20,9 +20,9 @@ export const globalStyle = StyleSheet.create({
     }, container: {
         flex: 1,
         paddingTop: 40,
-        // justifyContent: 'center',
+        justifyContent: 'center',
         alignItems: 'center',
-        margin: 'auto',
+        margin: 0,
         backgroundColor: "#181818"
     },
 });

@@ -74,11 +74,15 @@ function SignIn(props: LoginProps) {
     return (
         <View style={globalStyle.container}>
 
-            <Image style={{width: 80, height: 80}} source={require('../assets/images/festeno_yellow.png')}/>
-            <Text style={{fontFamily: "Dancing Script", fontSize: 60, color: "#FFF27E"}}>Festeno</Text>
+            <Image style={{   flex: 1,
+                width: '100%',
+                height: '100%',
+                maxHeight:100,
+                resizeMode: 'contain'}} source={require('../assets/images/festeno_yellow.png')}/>
+            <Text style={{fontFamily: "Dancing Script", fontSize: 100, color: "#FFF27E"}}>Festeno</Text>
 
             {/* <O2Auth/>*/}
-            <View style={{width: '80%', alignItems: 'center',marginTop:30}}>
+            <View style={{width: '80%', flex:0.7,      }}>
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')} style={globalStyle.link}>
                     <Text style={{color:"#F9F9F9"}}>Do not have an account yet? <Text style={globalStyle.linkText}>Sign up!</Text></Text>
                 </TouchableOpacity>
@@ -133,7 +137,14 @@ function SignIn(props: LoginProps) {
                     title='Sign in'
                     buttonStyle={{
                         backgroundColor: "#FFF27E",
-                        borderRadius:5
+                        borderRadius:5,
+                        width:"50%",
+
+
+                    }}
+                    containerStyle={{
+                        alignItems: 'center',
+
                     }}
                     titleStyle={{
                         color: '#242424'
