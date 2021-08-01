@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Image, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import {Dimensions, Image, Platform, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import {Button, Input} from "react-native-elements";
 import O2Auth from "./O2auth";
 import {connect} from "react-redux";
@@ -16,7 +16,13 @@ const primaryBlue = Platform.select({
 });
 
 const imageWidth = "80%";
+const {
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
+} = Dimensions.get('window');
 
+// based on iphone 5s's scale
+const scale = SCREEN_WIDTH / 320;
 const styles = StyleSheet.create({
     container: {
         flex: 0.9,
@@ -55,14 +61,14 @@ function SignUp(props: LoginProps) {
     const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'SignIn'>>();
     return (
         <View style={globalStyle.container}>
+            <View style={{width: '80%', flex:0.3, alignItems:"center"     }}>
+                <Image style={{   flex: 1,
+                    width: '100%',
+                    maxHeight: '70%',
 
-            <Image style={{   flex: 1,
-                width: '100%',
-                height: '100%',
-                maxHeight:100,
-                resizeMode: 'contain'}} source={require('../assets/images/festeno_yellow.png')}/>
-            <Text style={{fontFamily: "Dancing Script", fontSize: 100, color: "#FFF27E"}}>Festeno</Text>
-
+                    resizeMode: 'contain'}} source={require('../assets/images/festeno_yellow.png')}/>
+                <Text style={{fontFamily: "Dancing Script", fontSize:50 * scale , color: "#FFF27E"}}>Festeno</Text>
+            </View>
             {/* <O2Auth/>*/}
             <View style={{width: '80%', flex:0.7,      }}>
                 <TouchableOpacity onPress={() => navigation.navigate('SignIn')} style={globalStyle.link}>
