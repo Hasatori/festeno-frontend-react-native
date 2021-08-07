@@ -1,10 +1,15 @@
 export type RootStackParamList = {
-    Home: undefined;
+    Feed: undefined;
+    Recipes: undefined;
+    DietPlan: undefined;
+    Explore: undefined;
     SignIn: undefined;
+    Favourite: undefined;
+    Profile:undefined;
     TwoFactorCode: TwoFactorType,
     TwoFactorRecoveryCode: TwoFactorType | undefined,
     SignUp: undefined;
-    Profile: undefined;
+    BottomNavigation: undefined;
     NotFound: undefined;
 };
 

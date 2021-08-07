@@ -1,9 +1,12 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Home from "../screens/Home";
+import Feed from "../screens/Feed";
 import Settings from "../screens/Settings"
 import React from "react";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Explore from "../screens/Explore";
+import DietPlan from "../screens/DietPlan";
+import Recipes from "../screens/Recipes";
+import Favourite from "../screens/Favourite";
 
 const Tab = createBottomTabNavigator();
 
@@ -16,19 +19,19 @@ export function BottomNavigation() {
                 inactiveBackgroundColor: '#181818',
                 showLabel: false,
                 style:{
-                    height:70
+                    height:70,
                 }
-
             }}
         >
             <Tab.Screen name="DietPlan"
                         options={{
+
                             tabBarIcon: ({size, focused}) => (
                                 <MaterialCommunityIcons name="calendar" color={getIconColor(focused)}
                                                         size={size}/>),
 
                         }}
-                        component={Explore}/>
+                        component={DietPlan}/>
             <Tab.Screen name="Explore"
                         options={{
                             tabBarIcon: ({size,focused}) => (
@@ -37,19 +40,19 @@ export function BottomNavigation() {
                         component={Explore}/>
             <Tab.Screen options={{
                 tabBarIcon: ({size,focused}) => (<MaterialCommunityIcons name="home" color={getIconColor(focused)} size={size}/>),
-            }} name="Home" component={Home}/>
-            <Tab.Screen name="Settings"
+            }} name="Feed" component={Feed}/>
+            <Tab.Screen name="Favourite"
                         options={{
                             tabBarIcon: ({size,focused}) => (
                                 <MaterialCommunityIcons name="star" color={getIconColor(focused)} size={size}/>),
                         }}
-                        component={Settings}/>
+                        component={Favourite}/>
             <Tab.Screen name="Recipes"
                         options={{
                             tabBarIcon: ({size,focused}) => (
                                 <MaterialCommunityIcons name="notebook" color={getIconColor(focused)} size={size}/>),
                         }}
-                        component={Explore}/>
+                        component={Recipes}/>
 
 
         </Tab.Navigator>

@@ -21,7 +21,7 @@ function mapDispatchToProps(dispatch: ThunkDispatch<any, any, AnyAction>) {
 };
 const Drawer = createDrawerNavigator();
 export function DrawerNavigation(props:AppProps) {
-    const navigation = useNavigation<DrawerNavigationProp<RootStackParamList,'Profile'>>();
+    const navigation = useNavigation<DrawerNavigationProp<RootStackParamList,'BottomNavigation'>>();
     return(
         <Drawer.Navigator initialRouteName="Home" screenOptions={{headerShown: true}} >
             <Drawer.Screen

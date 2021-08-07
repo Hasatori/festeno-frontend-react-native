@@ -41,7 +41,7 @@ function mapStateToProps(state: AppState, props: ProfileProps) {
 function Profile(props: ProfileProps) {
     const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Profile'>>();
     return (
-        <View style={globalStyle.container}>
+        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff"}}>
 
             <Image style={{width: '30%', height: '30%'}} source={{uri: `data:image/png;base64,${props.user?.profileImage?.data}`}}/>
             <Text>{props.user.name}</Text>

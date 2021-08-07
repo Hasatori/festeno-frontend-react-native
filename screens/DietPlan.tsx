@@ -3,10 +3,10 @@ import {RootStackParamList} from "../types";
 import {Image, Text, View} from "react-native";
 import * as React from "react";
 
-export default function Explore({navigation}: StackScreenProps<RootStackParamList, 'Recipes'>) {
+export default function DietPlan({navigation}: StackScreenProps<RootStackParamList, 'DietPlan'>) {
     return (
         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:"#ffffff"}}>
-            <Text>Explore works!</Text>
+            <Text>Diet plan works!</Text>
         </View>
     );
 }

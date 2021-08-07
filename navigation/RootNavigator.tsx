@@ -1,28 +1,31 @@
 // A root stack navigator is often used for displaying modals on top of all other content
 // Read more here: https://reactnavigation.org/docs/modal
-import NotFoundScreen from "../screens/NotFoundScreen";
 import {RootStackParamList} from "../types";
 import {createStackNavigator} from "@react-navigation/stack";
 import * as React from "react";
 import {useEffect} from "react";
 import SignIn from "../screens/SignIn";
-import SignUp from "../screens/SignUp";
 import {useToast} from "react-native-styled-toast";
 import {AppProps, store} from "../App";
 import {dismissFailure, dismissInfo, dismissSuccess} from "../redux/generalActionTypes";
-import {connect} from "react-redux";
 import {AppState} from "../redux/store";
 import {ThunkDispatch} from "redux-thunk";
 import {AnyAction} from "redux";
 import {loadCurrentlyLoggedInUser, logoutActionCreator, refreshTokenActionCreator} from "../redux/userActionTypes";
-import {DrawerNavigation} from "./DrawerNavigation";
-import TwoFactorRecoveryCode from "../screens/TwoFactorRecoveryCode";
-import TwoFactorCode from "../screens/TwoFactorCode";
-import * as SecureStore from 'expo-secure-store';
 import Spinner from "react-native-loading-spinner-overlay";
 import {SkypeIndicator} from "react-native-indicators";
-import {ActivityIndicator, Image, Text, View} from "react-native";
+import {Button} from "react-native-elements";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {BottomNavigation} from "./BottomNavigation";
+import NotFoundScreen from "../screens/NotFoundScreen";
+import SignUp from "../screens/SignUp";
+import TwoFactorCode from "../screens/TwoFactorCode";
+import TwoFactorRecoveryCode from "../screens/TwoFactorRecoveryCode";
+import {connect} from "react-redux";
+import {useNavigation} from "@react-navigation/native";
+import {StackNavigationProp} from "@react-navigation/stack/lib/typescript/src/types";
+import {Settings} from "react-native";
+import Profile from "../screens/Profile";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -94,14 +97,42 @@ function RootNavigator(appProps: AppProps) {
                 {appProps.authenticated ? (
                         <>
                             <Stack.Screen
+                                options={({navigation})=>({
+                                    headerShown: true,
+                                    title: "Festeno",
+                                    headerTitleStyle: {
+                                        fontFamily: "Dancing Script",
+                                        fontSize: 30
+                                    },
+                                    headerRight: () => (
+                                        <Button
+                                            onPress={() =>navigation.navigate("Profile")}
 
-                                name="Profile" component={BottomNavigation}/>
+                                            buttonStyle={{
+                                                marginRight: 10,
+                                                backgroundColor: '#ffffff'
+                                            }}
+                                            icon={
+                                                <MaterialCommunityIcons name="face" color={"#DDDDDD"}
+                                                                        size={30}/>
+                                            }
+
+                                        />
+                                    ),
+                                    headerStyle: {
+                                        elevation: 0, // remove shadow on Android
+                                        shadowOpacity: 0, // remove shadow on iOS}
+                                    },
+                                })}
+
+                                name="BottomNavigation" component={BottomNavigation}/>
+                            <Stack.Screen name="Profile" component={Profile} options={{title: 'Profile',headerShown: true,}}/>
                             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{title: 'Oops!'}}/>
                         </>)
                     : (
                         <>
-                            <Stack.Screen name="SignIn"   options={{headerShown:false }}  component={SignIn}/>
-                            <Stack.Screen name="SignUp" options={{headerShown:false }}   component={SignUp}/>
+                            <Stack.Screen name="SignIn" options={{headerShown: false}} component={SignIn}/>
+                            <Stack.Screen name="SignUp" options={{headerShown: false}} component={SignUp}/>
                             <Stack.Screen name="TwoFactorCode" component={TwoFactorCode}/>
                             <Stack.Screen name="TwoFactorRecoveryCode" component={TwoFactorRecoveryCode}/>
                         </>

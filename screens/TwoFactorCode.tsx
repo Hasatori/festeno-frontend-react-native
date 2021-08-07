@@ -36,7 +36,7 @@ export interface LoginTwoFactorCodeProps {
     const route = useRoute<RouteProp<RootStackParamList, 'TwoFactorCode'>>();
     return (
         <View style={globalStyle.container}>
-            <View style={{width: '80%', alignItems: 'center'}}>
+            <View style={{width: '80%', alignItems: 'center', backgroundColor:"#ffffff"}}>
                 <Input
                     placeholder='code'
                     keyboardType="numeric"
