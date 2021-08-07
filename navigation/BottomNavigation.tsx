@@ -35,7 +35,7 @@ export function BottomNavigation() {
             <Tab.Screen name="Explore"
                         options={{
                             tabBarIcon: ({size,focused}) => (
-                                <MaterialCommunityIcons name="loupe" color={getIconColor(focused)} size={size}/>),
+                                <MaterialCommunityIcons name="search-web" color={getIconColor(focused)} size={size}/>),
                         }}
                         component={Explore}/>
             <Tab.Screen options={{
