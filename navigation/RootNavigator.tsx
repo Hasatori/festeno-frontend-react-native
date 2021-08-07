@@ -22,6 +22,7 @@ import * as SecureStore from 'expo-secure-store';
 import Spinner from "react-native-loading-spinner-overlay";
 import {SkypeIndicator} from "react-native-indicators";
 import {ActivityIndicator, Image, Text, View} from "react-native";
+import {BottomNavigation} from "./BottomNavigation";
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -94,7 +95,7 @@ function RootNavigator(appProps: AppProps) {
                         <>
                             <Stack.Screen
 
-                                name="Profile" component={DrawerNavigation}/>
+                                name="Profile" component={BottomNavigation}/>
                             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{title: 'Oops!'}}/>
                         </>)
                     : (
